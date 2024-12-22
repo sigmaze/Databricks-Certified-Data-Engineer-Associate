@@ -91,6 +91,10 @@
 
 # COMMAND ----------
 
+display(dbutils.fs.ls("dbfs:/mnt/demo/author_counts_checkpoint"))
+
+# COMMAND ----------
+
 # MAGIC %md
 # MAGIC ## Adding New Data
 

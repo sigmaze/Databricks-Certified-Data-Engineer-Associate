@@ -26,3 +26,8 @@ display(files)
 
 # MAGIC %sql
 # MAGIC SELECT * FROM hive_metastore.demo_bookstore_dlt_db.fr_daily_customer_books
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT * FROM hive_metastore.demo_bookstore_dlt_db.fr_daily_customer_books

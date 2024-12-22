@@ -103,6 +103,10 @@ SELECT * FROM employees@v1
 
 -- COMMAND ----------
 
+describe history employees
+
+-- COMMAND ----------
+
 -- MAGIC %md
 -- MAGIC
 -- MAGIC ## Dropping Tables

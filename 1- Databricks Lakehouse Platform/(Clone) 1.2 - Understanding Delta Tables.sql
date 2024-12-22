@@ -4,7 +4,7 @@
 
 -- COMMAND ----------
 
-USE CATALOG hive_metastore
+USE CATALOG sigmaze_eastus_databricks;
 
 -- COMMAND ----------
 
@@ -69,7 +69,7 @@ DESCRIBE DETAIL employees
 
 -- COMMAND ----------
 
--- MAGIC %fs ls 'dbfs:/user/hive/warehouse/employees'
+-- MAGIC %fs ls 'abfss://unity-catalog-storage@dbstoragegkmpwnvbahckq.dfs.core.windows.net/'
 
 -- COMMAND ----------
 
@@ -117,8 +117,4 @@ DESCRIBE HISTORY employees
 
 -- COMMAND ----------
 
--- MAGIC %python
--- MAGIC from pprint import pprint
--- MAGIC a=dbutils.fs.head('dbfs:/user/hive/warehouse/employees/_delta_log/00000000000000000005.json')
--- MAGIC pprint(a)
--- MAGIC
+

@@ -18,11 +18,25 @@
 
 -- MAGIC %python
 -- MAGIC files = dbutils.fs.ls(f"{dataset_bookstore}/customers-json")
+-- MAGIC print(f"data is in {dataset_bookstore}")
 -- MAGIC display(files)
 
 -- COMMAND ----------
 
 SELECT * FROM json.`${dataset.bookstore}/customers-json/export_001.json`
+
+-- COMMAND ----------
+
+-- MAGIC %python
+-- MAGIC import json 
+-- MAGIC from pprint import pprint
+-- MAGIC df = spark.read.text(f"{dataset_bookstore}/customers-json/export_001.json",wholetext=True)
+
+-- COMMAND ----------
+
+-- MAGIC %python
+-- MAGIC df.collect()
+-- MAGIC # print(json.dumps(wholeFile[0].value, indent=4))
 
 -- COMMAND ----------
 
@@ -83,6 +97,17 @@ LOCATION "${dataset.bookstore}/books-csv"
 
 -- COMMAND ----------
 
+CREATE EXTERNAL TABLE books_csv2
+  (book_id STRING, title STRING, author STRING, category STRING, price DOUBLE)
+USING CSV
+OPTIONS (
+  header = "true",
+  delimiter = ";"
+)
+LOCATION "${dataset.bookstore}/books-csv"
+
+-- COMMAND ----------
+
 SELECT * FROM books_csv
 
 -- COMMAND ----------
@@ -94,6 +119,10 @@ SELECT * FROM books_csv
 -- COMMAND ----------
 
 DESCRIBE EXTENDED books_csv
+
+-- COMMAND ----------
+
+show create table books_csv
 
 -- COMMAND ----------
 

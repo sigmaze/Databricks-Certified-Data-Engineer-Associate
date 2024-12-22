@@ -77,6 +77,10 @@ DESCRIBE FUNCTION get_url
 
 -- COMMAND ----------
 
+show functions from new_default ;
+
+-- COMMAND ----------
+
 DESCRIBE FUNCTION EXTENDED get_url
 
 -- COMMAND ----------

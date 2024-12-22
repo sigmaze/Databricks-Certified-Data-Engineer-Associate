@@ -20,13 +20,18 @@ SELECT * FROM orders
 
 -- COMMAND ----------
 
+select * from orders ;
+
+
+-- COMMAND ----------
+
 -- MAGIC %md
 -- MAGIC ## Overwriting Tables
 
 -- COMMAND ----------
 
 CREATE OR REPLACE TABLE orders AS
-SELECT * FROM parquet.`${dataset.bookstore}/orders`
+SELECT *  FROM parquet.`${dataset.bookstore}/orders`
 
 -- COMMAND ----------
 
@@ -76,6 +81,10 @@ ON c.customer_id = u.customer_id
 WHEN MATCHED AND c.email IS NULL AND u.email IS NOT NULL THEN
   UPDATE SET email = u.email, updated = u.updated
 WHEN NOT MATCHED THEN INSERT *
+
+-- COMMAND ----------
+
+select * from books;
 
 -- COMMAND ----------
 

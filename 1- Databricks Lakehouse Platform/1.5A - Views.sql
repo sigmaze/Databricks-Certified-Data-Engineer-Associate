@@ -23,6 +23,11 @@ VALUES (1, 'iPhone 14', 'Apple', 2022),
 
 -- COMMAND ----------
 
+select * from smartphones;
+
+-- COMMAND ----------
+
+USE CATALOG hive_metastore;
 SHOW TABLES
 
 -- COMMAND ----------
@@ -44,6 +49,10 @@ SELECT * FROM view_apple_phones;
 -- COMMAND ----------
 
 SHOW TABLES;
+
+-- COMMAND ----------
+
+show views;
 
 -- COMMAND ----------
 
@@ -79,6 +88,10 @@ AS SELECT * FROM smartphones
 -- COMMAND ----------
 
 SELECT * FROM global_temp.global_temp_view_latest_phones;
+
+-- COMMAND ----------
+
+describe formatted global_temp.global_temp_view_latest_phones;
 
 -- COMMAND ----------
 

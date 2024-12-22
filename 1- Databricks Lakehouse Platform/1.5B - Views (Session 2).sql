@@ -11,6 +11,10 @@ SHOW TABLES IN global_temp;
 
 -- COMMAND ----------
 
+
+
+-- COMMAND ----------
+
 SELECT * FROM global_temp.global_temp_view_latest_phones;
 
 -- COMMAND ----------

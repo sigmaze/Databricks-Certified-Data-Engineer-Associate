@@ -71,6 +71,14 @@ FROM orders
 
 -- COMMAND ----------
 
+describe orders;
+
+-- COMMAND ----------
+
+show create table orders;
+
+-- COMMAND ----------
+
 -- MAGIC %md
 -- MAGIC ## Explode Function
 
@@ -157,6 +165,14 @@ SELECT * FROM orders_updates
 
 -- COMMAND ----------
 
+  SELECT
+    sum(book.quantity),
+    book.book_id AS book_id
+  FROM orders_enriched
+  group by book.book_id 
+
+-- COMMAND ----------
+
 CREATE OR REPLACE TABLE transactions AS
 
 SELECT * FROM (
@@ -173,3 +189,15 @@ SELECT * FROM (
 );
 
 SELECT * FROM transactions
+
+-- COMMAND ----------
+
+SELECT * FROM (
+  SELECT
+    customer_id,
+    book.book_id AS book_id,
+    book.quantity AS quantity
+  FROM orders_enriched
+) PIVOT (
+  sum(quantity) FOR book_id in (book.book_id)
+);
