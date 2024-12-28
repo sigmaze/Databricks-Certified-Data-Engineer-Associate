@@ -56,11 +56,15 @@ AS SELECT * FROM json.`${datasets.path}/customers-json`
 
 -- COMMAND ----------
 
+insert into LIVE.orders_raw VALUES (10001,null,null,null,null,null)
+
+-- COMMAND ----------
+
 CREATE OR REFRESH STREAMING LIVE TABLE orders_cleaned (
   CONSTRAINT valid_order_number EXPECT (order_id IS NOT NULL) ON VIOLATION DROP ROW
 )
 COMMENT "The cleaned books orders with valid order_id"
-AS
+AS 
   SELECT order_id, quantity, o.customer_id, c.profile:first_name as f_name, c.profile:last_name as l_name,
          cast(from_unixtime(order_timestamp, 'yyyy-MM-dd HH:mm:ss') AS timestamp) order_timestamp, o.books,
          c.profile:address:country as country

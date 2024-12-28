@@ -4,6 +4,11 @@ display(files)
 
 # COMMAND ----------
 
+files = dbutils.fs.ls("dbfs:/mnt/demo/dlt/demo_bookstore")
+display(files)
+
+# COMMAND ----------
+
 files = dbutils.fs.ls("dbfs:/mnt/demo/dlt/demo_bookstore/system/events")
 display(files)
 
